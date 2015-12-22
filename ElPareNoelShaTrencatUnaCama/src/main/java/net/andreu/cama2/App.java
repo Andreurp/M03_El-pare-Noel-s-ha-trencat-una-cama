@@ -30,33 +30,30 @@ public class App {
 		int y=0;
 		try {
 			br = new BufferedReader(new FileReader(arxiu));
+			String linia = br.readLine();
 			char caracter;
 			//mentres hi hagin caracters llegir
-			while ((caracter = (char) br.read()) != -1) {
+			//while ((caracter = (char) br.read()) != '\0') {
+			for (int i = 0; i < linia.length(); i++){
 				//System.out.print(caracter);
+				caracter = linia.charAt(i);
 				switch (caracter) {
 					case '>':
-						cases.add(x+","+y);
 						x++;
 						break;
 					case '<':
-						cases.add(x+","+y);
 						x--;
 						break;
 					case '^':
-						cases.add(x+","+y);
 						y++;
 						break;
 					case 'v':
-						cases.add(x+","+y);
 						y--;
 						break;
-	
-					default:
-						break;
 				}
+				cases.add(x+","+y);
 			}
-			System.out.print("Se han visitat: "+cases.size()+"cases.");
+			System.out.println("Se han visitat: "+cases.size()+"cases.");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
